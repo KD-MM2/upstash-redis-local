@@ -14,8 +14,8 @@ load_dotenv()
 app = FastAPI()
 local_redis = redis.Redis(
     host=os.getenv("REDIS_HOST", "localhost"),
-    port=os.getenv("REDIS_PORT", 6379),
-    db=os.getenv("REDIS_DB", 0),
+    port=int(os.getenv("REDIS_PORT", 6379)),
+    db=int(os.getenv("REDIS_DB", 0)),
 )
 
 
@@ -195,3 +195,4 @@ def main() -> int:
         port=int(os.getenv("SERVER_PORT", 3000)),
         workers=int(os.getenv("SERVER_WORKERS", 1)),
     )
+    return 0
