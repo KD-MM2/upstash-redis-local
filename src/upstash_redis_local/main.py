@@ -1,3 +1,4 @@
+#cython: annotation_typing=False
 import base64
 import json
 import os
