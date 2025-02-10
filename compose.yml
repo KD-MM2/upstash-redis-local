@@ -1,0 +1,16 @@
+services:
+    upstash_redis_local:
+        container_name: upstash_redis_local
+        image: "kaotd/upstash_redis_local:0.1.0"
+        build:
+            context: .
+            dockerfile: Dockerfile
+            args:
+                - VERSION=0.1.0
+        env_file:
+            - .env
+        ports:
+            - ${HOST_PORT}:${SERVER_PORT}
+        restart: unless-stopped
+        tty: true
+        stdin_open: true
